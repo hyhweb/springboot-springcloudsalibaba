@@ -1,0 +1,19 @@
+server:
+  port: 8082
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.226.138:8848
+      config:
+        server-addr: 192.168.226.138:8848
+        file-extension: yml
+  application:
+    name: base-service
+#服务的端点检查 actuator配置如下management
+#http://localhost:8082/actuator/nacos-discovery
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
