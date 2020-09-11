@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
  * Create by hyhweb on 2020/9/9 11:27
  */
 @RestController
-@RequestMapping("system")
+@RequestMapping("/system")
 public class UserController {
-    @GetMapping("getName")
+    @GetMapping("/getName")
     public String getName(@RequestParam String name) {
-        return String.format("come from {}", name);
+        return String.format("come from %s", name);
     }
 }

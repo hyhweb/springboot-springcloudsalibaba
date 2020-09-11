@@ -3,10 +3,40 @@ server:
 spring:
   application:
     name: system-service
+  boot:
+    admin:
+      client:
+        url: http://127.0.0.1:9090
   cloud:
     nacos:
       config:
         server-addr: 192.168.226.138:8848
         file-extension: yml
+        namespace: 4dc80fc3-91ee-4c9e-8bc8-24330c78043c
       discovery:
         server-addr: 192.168.226.138:8848
+        namespace: 4dc80fc3-91ee-4c9e-8bc8-24330c78043c
+    #配置sentinel的端口和地址
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: 192.168.226.136:7070
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 600000
+  sentinel:
+    enabled: true
+#服务的端点检查 actuator配置如下management
+#http://localhost:8082/actuator/nacos-discovery
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
